@@ -1,0 +1,110 @@
+  @import "tailwindcss";
+
+  @theme {
+    /* Couleurs unifiées pour TOUT LE SITE (Thème Grand Bal) */
+    --color-bal-noir: #06040A;
+    --color-bal-sombre: #0E0912;
+    --color-bal-sombre2: #160E1A;
+    --color-bal-or: #C9A84C;
+    --color-bal-or-clair: #F0D07A;
+    --color-bal-or-pale: #F8ECC0;
+    --color-bal-cramoisi: #8B0000;
+    --color-bal-cramoisi-vif: #C41E3A;
+    --color-bal-texte: #EDE0CA;
+    --color-bal-texte-dim: rgba(237,224,202,0.70);
+    --color-bal-texte-clair: #F5EDD8;
+    
+    --font-sans: "Jost", "system-ui";
+    --font-serif: "Playfair Display", "serif";
+    --font-cinzel: "Cinzel", "serif";
+    --font-cinzel-dec: "Cinzel Decorative", "serif";
+  }
+
+  :root {
+    background-color: var(--color-bal-noir);
+    color: var(--color-bal-texte);
+    font-family: var(--font-sans);
+  }
+
+  /* ========================================================
+    1. STYLES GLOBAUX (Utilisés sur Home et Nocturnes 2026)
+    ======================================================== */
+
+  .bg-theatre-hero, .bg-hero-2027 {
+    background: radial-gradient(ellipse 90% 70% at 50% 35%, rgba(139,0,0,.35), transparent 65%),
+                radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,168,76,.07), transparent 60%),
+                linear-gradient(180deg, #0A0208, #1A0808 35%, #0E050E 70%, var(--color-bal-noir));
+  }
+
+  .text-gradient-or-rouge, .text-gradient-2027 {
+    background: linear-gradient(160deg, var(--color-bal-or-pale), var(--color-bal-or) 45%, var(--color-bal-cramoisi-vif) 75%, var(--color-bal-or));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 6s linear infinite;
+  }
+
+  @keyframes shimmer { 0% { background-position: 0% } 100% { background-position: 300% } }
+
+  /* Etincelles globales (Pour Home, 2026 et 2027) */
+  @keyframes drift { 0% { transform: translateY(100vh) translateX(0) scale(.5); opacity: 0 } 8% { opacity: .9 } 92% { opacity: .4 } 100% { transform: translateY(-8vh) translateX(var(--dx)) scale(2); opacity: 0 } }
+  .spark, .spark-2027 { position: absolute; border-radius: 50%; background: var(--color-bal-or-clair); animation: drift linear infinite; opacity: 0; }
+
+
+  /* ========================================================
+    2. STYLES SPÉCIFIQUES (Utilisés sur Grand Bal 2027)
+    ======================================================== */
+
+  .text-miroir-2027 {
+    background: linear-gradient(160deg, var(--color-bal-or-pale), var(--color-bal-or), var(--color-bal-cramoisi-vif), var(--color-bal-or));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: blur(2px);
+    opacity: .15;
+    transform: scaleY(-1);
+    animation: shimmer 6s linear infinite;
+    user-select: none;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent 60%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent 60%);
+  }
+
+  .spotlight-2027 { 
+    background: conic-gradient(from 270deg at 50% 100%, transparent 55deg, rgba(201,168,76,.12) 90deg, transparent 125deg); 
+    animation: flicker 8s ease-in-out infinite; 
+  }
+
+  /* Animations 2027 */
+  @keyframes flicker { 0%, 100% { opacity: 1 } 40% { opacity: .85 } 70% { opacity: .9 } }
+  @keyframes sway { 0%, 100% { transform: translateX(-50%) rotate(-1deg) } 50% { transform: translateX(-50%) rotate(1deg) } }
+  @keyframes pulse-red { 0%, 100% { opacity: .7 } 50% { opacity: 1 } }
+  @keyframes lueur-or { from { text-shadow: 0 0 15px rgba(201,168,76,.6), 0 0 35px rgba(201,168,76,.3) } to { text-shadow: 0 0 30px rgba(201,168,76,1), 0 0 70px rgba(201,168,76,.7), 0 0 100px rgba(201,168,76,.3) } }
+  @keyframes apparu { from { opacity: 0; transform: translateY(50px) scale(.97) } to { opacity: 1; transform: none } }
+
+  .animate-sway { animation: sway 6s ease-in-out infinite; }
+  .animate-apparu { animation: apparu 1.6s cubic-bezier(.16,1,.3,1) .4s both; }
+  .animate-pulse-red { animation: pulse-red 4s ease-in-out infinite; }
+  .animate-lueur-or { animation: lueur-or 2.5s ease-in-out infinite alternate; }
+
+  /* Révélation au scroll (Pour Event2027) */
+  .rev { opacity: 0; transform: translateY(36px); transition: opacity .9s ease, transform .9s ease; }
+  .rev-g { opacity: 0; transform: translateX(-40px); transition: opacity .9s ease, transform .9s ease; }
+  .rev-d { opacity: 0; transform: translateX(40px); transition: opacity .9s ease, transform .9s ease; }
+  .rev.in, .rev-g.in, .rev-d.in { opacity: 1; transform: none; }
+
+  /* Cadres et Décors 2027 */
+  .cadre-2027 { aspect-ratio: 3/4; position: relative; background: linear-gradient(145deg, #1A0A18, #2A0A10); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .cadre-2027::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,.12), transparent 60%), radial-gradient(ellipse at 50% 90%, rgba(139,0,0,.4), transparent 50%); }
+  .cadre-2027::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(201,168,76,.025) 0, rgba(201,168,76,.025) 1px, transparent 1px, transparent 60px), repeating-linear-gradient(90deg, rgba(201,168,76,.025) 0, rgba(201,168,76,.025) 1px, transparent 1px, transparent 60px); }
+
+  .coin-2027 { position: absolute; width: 36px; height: 36px; border-color: var(--color-bal-or); border-style: solid; opacity: .3; }
+  .coin-2027.tl { top: 14px; left: 14px; border-width: 1px 0 0 1px; }
+  .coin-2027.tr { top: 14px; right: 14px; border-width: 1px 1px 0 0; }
+  .coin-2027.bl { bottom: 14px; left: 14px; border-width: 0 0 1px 1px; }
+  .coin-2027.br { bottom: 14px; right: 14px; border-width: 0 1px 1px 0; }
+
+  .horloge-2027 { margin: 0 auto 48px; width: 160px; height: 160px; border-radius: 50%; border: 1px solid rgba(201,168,76,.25); position: relative; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 60px rgba(139,0,0,.5), inset 0 0 40px rgba(0,0,0,.8); }
+  .horloge-2027::before { content: ''; position: absolute; inset: 8px; border-radius: 50%; border: 1px solid rgba(201,168,76,.12); }
