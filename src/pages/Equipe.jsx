@@ -106,7 +106,7 @@ export const Equipe = () => {
                     className={`absolute left-1/2 -translate-x-1/2 border border-bal-or/30 rounded-sm overflow-hidden z-10 transition-all duration-500 group-hover:border-bal-or/60 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(201,168,76,0.2)]
                       ${
                         isMaryam
-                          ? 'top-[16px] w-[180px] sm:w-[200px] h-[200px] sm:h-[220px]'
+                          ? 'top-[10px] w-[220px] sm:w-[240px] h-[230px] sm:h-[250px]'
                           : 'top-[30px] w-[140px] sm:w-[160px] h-[140px] sm:h-[160px]'
                       }`}
                   >
